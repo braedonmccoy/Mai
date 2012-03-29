@@ -1,5 +1,4 @@
 open
-find
-play
-internet
-itunes
+go to|cd
+internet|cd \Users\Big Mac\AppData\Local\RockMelt\Application~rockmelt.exe
+itunes|cd \Program Files (x86)\iTunes~iTunes.exe
