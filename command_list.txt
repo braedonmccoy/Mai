@@ -1,0 +1,5 @@
+open
+find
+play
+internet
+itunes
