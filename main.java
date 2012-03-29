@@ -6,10 +6,17 @@
 import java.io.*;
 import java.util.*;
 public class main{
+<<<<<<< HEAD
 	public static List<String> input = new ArrayList<String>(); // User input
 	public static List<String> commands = new ArrayList<String>(); // Commands in txt
 	public static List<String> filtered = new ArrayList<String>(); // Common items from above two
 	public static List<String> full = new ArrayList<String>(); // Full list of entries in text
+=======
+	public static ArrayList input = new ArrayList(); // User input
+	public static ArrayList commands = new ArrayList(); // Commands in txt
+	public static ArrayList filtered = new ArrayList(); // Common items from above two
+	public static ArrayList full = new ArrayList(); // Full list of entries in text
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 	public static int numCommands = 0;
 
 	public static void main(String[] args){
@@ -18,6 +25,7 @@ public class main{
 		ArrayList arr = new ArrayList();
 		ArrayList action = new ArrayList();
 		String finalCommand;
+<<<<<<< HEAD
 		String result;
 
 		result = getCommands("../command_list.txt");
@@ -35,6 +43,17 @@ public class main{
 		filtered = check(); // action is the commands found in the input.
 		//print("ArrayList: ");
 		//printAL(filtered);
+=======
+
+
+		getCommands("command_list.txt");
+		print("Please enter text to speak: ");
+		text = scan.nextLine();
+		print("You said: " + text);
+
+		input = split(text); // input is an ArrayList that contains the input.
+		filtered = check(); // action is the commands found in the input.
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 		//finalCommand = process(); // get associated actions from txt and runs them.
 	}
 
@@ -43,6 +62,7 @@ public class main{
 		return;
 	}
 
+<<<<<<< HEAD
 	public static void printAL(List<String> al){
 		int i = 0;
 		for(i = 0; i < al.size(); i++){
@@ -53,15 +73,26 @@ public class main{
 
 	public static List split(String orig){
 		List<String> finalArr = new ArrayList<String>();
+=======
+	public static ArrayList split(String orig){
+		ArrayList finalArr = new ArrayList();
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 		String[] arr = orig.split(" ");
 		int i = 0;
 		for(i = 0; i < arr.length; i++){
 			finalArr.add(arr[i]);
 		}
+<<<<<<< HEAD
 		return(finalArr);
 	}
 
 	public static String seperateCom(String full){ // Giving me trouble, not returning anything useful. Need a better way.
+=======
+		return finalArr;
+	}
+
+	public static String seperateCom(String full){
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 		int pos = 0;
 		String fin;
 
@@ -97,6 +128,7 @@ public class main{
 		try{
 			BufferedReader reader = new BufferedReader(
 			new FileReader(location), 8 * 1024);
+<<<<<<< HEAD
 			if(!reader.ready()){
 				print("ERROR: Cannot create Reader");
 				return("ERROR");
@@ -106,6 +138,11 @@ public class main{
 				full.add(line);
 				//print("Com: " + line);
 
+=======
+			while((line = reader.readLine()) != null){
+				full.add(line);
+				line = seperateCom(line);
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 				if(line != ""){
 					commands.add(line);
 					numCommands++;
@@ -118,12 +155,16 @@ public class main{
 			return("ERROR: " + e.getMessage());
 		}
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 	public static String remCommand(String command){
 		commands.remove(command);
 		numCommands--;
 		return("");
 	}
+<<<<<<< HEAD
 
 	public static ArrayList check(){
 		ArrayList common = new ArrayList(commands);
@@ -144,6 +185,22 @@ public class main{
 		return(common);
 	}
 
+=======
+	public static ArrayList check(){
+		ArrayList common = new ArrayList();
+		int numCommon = 0;
+		for(Iterator<String> i = input.iterator(); i.hasNext();){	//Iterates through the ArrayList
+			String item = i.next();
+			if(commands.contains(item)){	//Checks for commonalities and adds them to Common
+				common.add(item);
+				print(item);
+				numCommon++;
+			}
+			//print("Searched For: " + item);
+		}
+		return common;
+	}
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
 	public static String process(){ // Cannot run programs. Need to debug and fix.
 		int index;
 		String orig;

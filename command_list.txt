@@ -1,2 +1,9 @@
+<<<<<<< HEAD
 internet
 itunes
+=======
+open
+go to|cd
+internet|cd \Users\Big Mac\AppData\Local\RockMelt\Application~rockmelt.exe
+itunes|cd \Program Files (x86)\iTunes~iTunes.exe
+>>>>>>> fc7f993c72477f4ee121e83dbf66d61ee9d2e9ad
