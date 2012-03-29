@@ -27,7 +27,7 @@ public class main{
 
 		input = split(text); // input is an ArrayList that contains the input.
 		filtered = check(); // action is the commands found in the input.
-		finalCommand = process(); // get associated actions from txt and runs them.
+		//finalCommand = process(); // get associated actions from txt and runs them.
 	}
 
 	public static void print(String text){
@@ -108,6 +108,7 @@ public class main{
 			String item = i.next();
 			if(commands.contains(item)){	//Checks for commonalities and adds them to Common
 				common.add(item);
+				print(item);
 				numCommon++;
 			}
 			//print("Searched For: " + item);
@@ -125,7 +126,7 @@ public class main{
 		if(filtered.size() > 1){
 			print("Multiple Responses. This will be coded soon"); // Figure out what your going to do about this soon.
 		}else{
-			act = (String)full.get(0);
+		/*	act = (String)full.get(0);
 
 
 			sec = act.indexOf('~') + 1;
@@ -180,7 +181,7 @@ public class main{
 				    System.err.println(e1);
 				    System.exit(1);
 				}
-			}
+			}*/
 		}
 		return(" ");
 	}
