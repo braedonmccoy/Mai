@@ -1,2 +1,0 @@
-cd C:/Program Files/Mozilla Firefox/&firefox.exe
-cd C:/Program Files/iTunes/&iTunes.exe
