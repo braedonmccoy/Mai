@@ -43,7 +43,11 @@ public class main{
 		filtered = check(); // action is the commands found in the input.
 		//print("ArrayList: Filtered");
 		//printAL(actions);
-		finalCommand = process(); // get associated actions from txt and runs them.
+		if(filtered.size() == 0){
+			print("MAI: I'm not sure what you are trying to say...");
+		}else{
+			process(); // get associated actions from txt and runs them.
+		}
 	}
 
 	public static void print(String text){
@@ -158,7 +162,7 @@ public class main{
 		}
 	}
 
-	public static ArrayList check(){
+	public static ArrayList check(){ // Need to add backup check to check dialogue.
 		ArrayList common = new ArrayList(commands);
 		int numCommon = 0;
 		common.retainAll(input);
@@ -174,14 +178,10 @@ public class main{
 
 		}
 		*/
-		if(common.size() == 0){
-			return(null);
-		}else{
-			return(common);
-		}
+		return(common);
 	}
 
-	public static String process(){ // Runs the associated action tied to the command entered by the user.
+	public static void process(){ // Runs the associated action tied to the command entered by the user.
 		int i;
 		String act;
 		String tmp;
@@ -189,13 +189,13 @@ public class main{
 
 		if(filtered.size() > 1){
 			todo.add(actions.get(commands.indexOf((String)filtered.get(0)))); // gets the action associated with the command
-			//print(todo.get(0));
+			print(todo.get(0));
 			for(i = 0; i < filtered.size(); i++){
 				if(!(todo.contains(actions.get(commands.indexOf((String)filtered.get(i)))))){
 					todo.add(actions.get(commands.indexOf((String)filtered.get(i))));
 					//print("" + i);
 				}
-				//print(todo.get(i));
+				print(todo.get(i));
 			}
 
 		}else{
@@ -217,6 +217,6 @@ public class main{
 				}catch(IOException e){
 					print("ERROR WITH RUNTIME");
 				}
-		return(" ");
+		return;
 	}
 }
