@@ -12,6 +12,7 @@ public class main{
 	public static List<String> filtered = new ArrayList<String>(); // Common items from above two
 	public static List<String> full = new ArrayList<String>(); // Full list of entries in text
 	public static List<String> actions = new ArrayList<String>(); // Actions in txt.
+	public static List<String> todo = new ArrayList<String>(); // Actions in txt.
 	public static int numCommands = 0;
 
 	public static void main(String[] args){
@@ -23,12 +24,16 @@ public class main{
 		String result;
 
 		result = getCommands("../command_list.txt");
+		if(result != ""){
+			print(result);
+		}
 		result = getActions("../action_list.txt");
 		if(result != ""){
 			print(result);
 		}
-		print("Please enter what you want MAI to do: ");
+		print("MAI: Please enter what you want me to do: ");
 		text = scan.nextLine();
+		print("MAI: Working...");
 
 		//print("ArrayList: Commands");
 		//printAL(commands);
@@ -37,7 +42,7 @@ public class main{
 		//printAL(input);
 		filtered = check(); // action is the commands found in the input.
 		//print("ArrayList: Filtered");
-		//printAL(filtered);
+		//printAL(actions);
 		finalCommand = process(); // get associated actions from txt and runs them.
 	}
 
@@ -107,7 +112,7 @@ public class main{
 					print("ERROR: Cannot create Reader");
 					return("ERROR");
 				}else{
-					print("Reader is ready. Getting Commands.");
+					//print("Reader is ready. Getting Commands.");
 				}
 			while((line = reader.readLine()) != null){
 				//print("Full: " + line);
@@ -138,7 +143,7 @@ public class main{
 					print("ERROR: Cannot create Reader");
 					return("ERROR");
 				}else{
-					print("Reader is ready. Getting Actions.");
+					//print("Reader is ready. Getting Actions.");
 				}
 			while((line = reader.readLine()) != null){
 				if(line != ""){
@@ -176,83 +181,42 @@ public class main{
 		}
 	}
 
-	public static String process(){ // Cannot run programs. Need to debug and fix.
+	public static String process(){ // Runs the associated action tied to the command entered by the user.
 		int i;
-		String orig;
 		String act;
-		int sec;
-		String second;
-		String[] array;
+		String tmp;
+		String str;
 
 		if(filtered.size() > 1){
-			print("Multiple Responses. This will be coded soon"); // Figure out what your going to do about this soon.
-		}else{
-			orig = actions.get(commands.indexOf((String)filtered.get(0)));
-			act = (String)filtered.get(0);
-			array = orig.split("|&|");
-
-
-			/*sec = act.indexOf('&') + 1;
-			if(sec != 1){
-				second = act.substring(sec, act.length());
-
-				print(act);
-				print(second);
-				try {
-		   			String ls_str;
-
-		    		Process ls_proc = Runtime.getRuntime().exec(act);
-		    		//Process ls_proc2 = Runtime.getRuntime().exec(second);
-				    // get its output (your input) stream
-
-				    DataInputStream ls_in = new DataInputStream(
-			                                          ls_proc.getInputStream());
-
-				    try {
-					while ((ls_str = ls_in.readLine()) != null) {
-					    System.out.println(ls_str);
-					}
-				    } catch (IOException e) {
-					System.exit(0);
-				    }
-				} catch (IOException e1) {
-				    System.err.println(e1);
-				    System.exit(1);
+			todo.add(actions.get(commands.indexOf((String)filtered.get(0)))); // gets the action associated with the command
+			//print(todo.get(0));
+			for(i = 0; i < filtered.size(); i++){
+				if(!(todo.contains(actions.get(commands.indexOf((String)filtered.get(i)))))){
+					todo.add(actions.get(commands.indexOf((String)filtered.get(i))));
+					//print("" + i);
 				}
-			}else{
+				//print(todo.get(i));
+			}
 
-				print(act);
-				print(orig);
-				second = null;
-				try {
-		   			String ls_str;
-
-		    		Process ls_proc = Runtime.getRuntime().exec(orig);
-
-				    // get its output (your input) stream
-
-				    DataInputStream ls_in = new DataInputStream(
-			                                          ls_proc.getInputStream());
-
-				    try {
-					while ((ls_str = ls_in.readLine()) != null) {
-					    System.out.println(ls_str);
-					}
-				    } catch (IOException e) {
-					System.exit(0);
-				    }
-				} catch (IOException e1) {
-				    System.err.println(e1);
-				    System.exit(1);
-				}*/
+		}else{
+			todo.add(actions.get(commands.indexOf((String)filtered.get(0))));
+		}
 				try{
-					print(orig);
+
+					for(i = 1; i < todo.size(); i++){
+						if(todo.get(i) != null){
+							str = todo.get(0); // get the base command
+							tmp = todo.get(i); // get the argument
+							str += tmp; // add the argument to the end of the first command
+							todo.set(0, str); // set the first item to the full command
+							//print(todo.get(0));
+						}
+					}
 					Runtime rt = Runtime.getRuntime();
-					Process pr = rt.exec("cmd /c " + orig);
+					Process pr = rt.exec("cmd /c " + todo.get(0));
 				}catch(IOException e){
 					print("ERROR WITH RUNTIME");
 				}
-			}
 		return(" ");
 	}
 }

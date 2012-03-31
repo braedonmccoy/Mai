@@ -1,3 +1,7 @@
-cd %ProgramFiles(x86)%\Mozilla Firefox\ & firefox.exe
+cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
 cd %ProgramFiles%\iTunes\ & iTunes.exe
 cd %ProgramFiles%\Microsoft Office\Office14\ & WINWORD.EXE
+ --new-window http://www.facebook.com
+ --new-window http://www.google.com
+ --new-window http://mail.google.com
+ --new-window http://github.com

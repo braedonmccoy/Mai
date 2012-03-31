@@ -1,3 +1,7 @@
 internet
 itunes
 word
+facebook
+google
+gmail
+github
