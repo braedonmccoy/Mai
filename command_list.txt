@@ -1,6 +1,11 @@
 internet
+browser
+rockmelt
+firefox
+explorer
 itunes
 word
+jcreator
 facebook
 google
 gmail

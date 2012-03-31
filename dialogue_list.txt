@@ -1,0 +1,16 @@
+hello
+Hello, I am MAI.
+hi
+Hello.
+hey
+Hello there.
+morning
+Good Morning, how can I help you?
+afternoon
+Good afternoon, how can I help you?
+evening
+Good evening, how can I help you?
+who
+I am MAI, short for My Artificial Intelligence, created by Braedon McCoy. I can help you run your computer.
+about
+I am MAI, short for My Artificial Intelligence, created by Braedon McCoy. I can help you run your computer.

@@ -7,3 +7,4 @@ Progress:
 3/30/2012 7:53pm - ProcessBuilder works! It took me a while. Now to expand the library of commands...
 3/30/2012 9:58pm - Skeleton completed. Need to fix how process() deals with a bad command. Need to start on Voice.
 3/30/2012 10:10pm - Bad commands dealt with. Next is a dialogue backup check. Voice is postponed.
+3/31/2012 12:58pm - Dialogue backup check finished. Still remaining: Voice control and library expansion.
