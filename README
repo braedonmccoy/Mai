@@ -8,3 +8,4 @@ Progress:
 3/30/2012 9:58pm - Skeleton completed. Need to fix how process() deals with a bad command. Need to start on Voice.
 3/30/2012 10:10pm - Bad commands dealt with. Next is a dialogue backup check. Voice is postponed.
 3/31/2012 12:58pm - Dialogue backup check finished. Still remaining: Voice control and library expansion.
+4/16/2012 2:44pm - Classes got in the way. Version 1 done, changing most of everything for version 2.
