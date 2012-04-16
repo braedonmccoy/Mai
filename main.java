@@ -8,12 +8,12 @@ import java.util.*;
 import java.lang.*;
 public class main{
 	public static List<String> input = new ArrayList<String>(); // User input
-	public static List<String> commands = new ArrayList<String>(); // Commands in txt
-	public static List<String> filtered = new ArrayList<String>(); // Common items from above two
-	public static List<String> full = new ArrayList<String>(); // Full list of entries in text
+	public static List<String> commands = new ArrayList<String>(); // Commands in txt.
 	public static List<String> actions = new ArrayList<String>(); // Actions in txt.
+	public static List<String> dialogue = new ArrayList<String>(); // Dialogue in txt
+	public static List<String> filtered = new ArrayList<String>(); // Common items from commands and actions
+	public static List<String> full = new ArrayList<String>(); // Full list of entries in text
 	public static List<String> todo = new ArrayList<String>(); // Final commands to execute.
-	public static List<String> dialogue = new ArrayList<String>(); // Dialogue in txt.
 	public static List<String> response = new ArrayList<String>(); // Responses to dialogue.
 	public static int numCommands = 0;
 
@@ -23,6 +23,7 @@ public class main{
 
 		print("Hello and welcome. I am MAI. How can I help you?\n");
 
+		//status =
 		result = getCommands("../command_list.txt");
 		if(result != ""){
 			print(result);
@@ -182,14 +183,14 @@ public class main{
 					return("ERROR");
 				}else{
 					//print("Reader is ready. Getting Actions.");
+					while((line = reader.readLine()) != null){
+						if(line != ""){
+							dialogue.add(line);
+						}else{
+							return("ERROR: Action not found!");
+						}
+					}
 				}
-			while((line = reader.readLine()) != null){
-				if(line != ""){
-					dialogue.add(line);
-				}else{
-					return("ERROR: Action not found!");
-				}
-			}
 			return("");
 		} catch(IOException e){
 			return("ERROR JavaIOException e:" + e.getMessage());
@@ -283,6 +284,7 @@ public class main{
 				}
 				Runtime rt = Runtime.getRuntime();
 				Process pr = rt.exec("cmd /c " + todo.get(0));
+				//pr.destroy();
 			}catch(IOException e){
 				print("Sir, there was a problem: " + e.getMessage());
 			}

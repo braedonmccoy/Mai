@@ -3,7 +3,7 @@ cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
 cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
 cd %ProgramFiles(x86)%\Mozilla Firefox\ & firefox.exe
 explorer.exe
-cd %ProgramFiles%\iTunes\ & iTunes.exe
+cd %ProgramFiles(x86)%\iTunes\ & iTunes.exe
 cd %ProgramFiles%\Microsoft Office\Office14\ & WINWORD.EXE
 cd %ProgramFiles(x86)%\Xinox Software\JCreatorV5LE\ & JCreator.exe
  --new-window http://www.facebook.com
