@@ -1,5 +1,5 @@
 /* Mai
- *Version 1.0
+ *Version 1.1
  *3/14/2012
  *Braedon McCoy
 */
@@ -8,8 +8,8 @@ import java.util.*;
 import java.lang.*;
 public class main{
 	public static List<String> input = new ArrayList<String>(); // User input
-	public static List<String> commands = new ArrayList<String>(); // Commands in txt.
-	public static List<String> actions = new ArrayList<String>(); // Actions in txt.
+//	public static List<String> commands = new ArrayList<String>(); // Commands in txt.
+//	public static List<String> actions = new ArrayList<String>(); // Actions in txt.
 	public static List<String> dialogue = new ArrayList<String>(); // Dialogue in txt
 	public static List<String> filtered = new ArrayList<String>(); // Common items from commands and actions
 	public static List<String> full = new ArrayList<String>(); // Full list of entries in text
@@ -18,34 +18,118 @@ public class main{
 	public static int numCommands = 0;
 
 	public static void main(String[] args){
-		String result;
-		boolean status;
+		List<String> commands = new ArrayList<String>();
+		boolean result;
+		Scanner scan = new Scanner(System.in);
+		String text = "";
+
+		result = load("../check.txt"); // full now contains check.txt
+		if(result == false){
+			print("Error: Please contact your system Administrator.");
+			return;
+		}
 
 		print("Hello and welcome. I am MAI. How can I help you?\n");
+		System.out.print("User: ");
+		text = scan.nextLine();
+		if(text.contains("exit")){
+			print("Goodbye...");
+			return;
+		}
+		checkInput(text);
+		findCommands(text, commands);
+		/*text = formatInput(text);
+		//print(text);
 
-		//status =
-		result = getCommands("../command_list.txt");
-		if(result != ""){
-			print(result);
+		input = split(text); // input is an ArrayList that contains the input.
+		filtered = check(); // action is the commands found in the input.
+		if(filtered.size() != 0){
+			process(); // get associated actions from txt and runs them.
+		}else{
+			response = checkDia();
+			if(response.size()  == 0){
+				print("MAI: I'm not sure what you are trying to say...");
+			}else{
+				process();
+			}
 		}
-		result = getActions("../action_list.txt");
-		if(result != ""){
-			print(result);
-		}
-		result = getDialogue("../dialogue_list.txt");
-		if(result != ""){
-			print(result);
-		}
+		return;*/
+	}
 
-		do{
-			status = run();
-		}while(status == true);
+	public static boolean load(String location){
+		String line = "";
+		int i = 0;
+		try{
+				FileReader r = new FileReader(location);
+				if (!(r.ready())){
+					return(false);
+				}
+					BufferedReader reader = new BufferedReader(r);
+				if(!reader.ready()){
+					print("ERROR: Cannot create Reader");
+					return(false);
+				}else{
+					//print("Reader is ready. Getting Commands.");
+				}
+			while((line = reader.readLine()) != null){
+				full.add(line);
+			}
+			return(true);
+		} catch(IOException e){
+			print("ERROR JavaIOException e:" + e.getMessage());
+			return(false);
+		}
 	}
 
 	public static void print(String text){
 		System.out.println(text);
 		return;
 	}
+
+	public static void checkInput(String &text){
+		int ascii;
+		char letter;
+		String formatted;
+
+		text.toLowerCase();
+		for(int i = 0; i< text.length(); i++){
+			letter = text.charAt(i);
+			ascii = letter;
+			if(((ascii >= 97) && (ascii <= 122)) || (ascii == 32)){
+				formatted += letter;
+			}
+		}
+		text = formatted;
+		return();
+	}
+
+	public static String findCommands(String text, ArrayList &commands){
+		int i;
+		boolean result;
+		Pattern p = Pattern.compile(text);
+
+		for(i = 0; i < commands.size(); i++){
+			Matcher m = p.matcher(commands.get(i));
+			result = m.find();
+		}
+	}
+
+		/*
+		String result;
+
+		result = getCommands("../command_list.txt");
+		if(result != ""){
+			return(false);
+		}
+		result = getActions("../action_list.txt");
+		if(result != ""){
+			return(false);
+		}
+		result = getDialogue("../dialogue_list.txt");
+		if(result != ""){
+			return(false);
+		}
+		return(true);
 
 	public static void printAL(List<String> al){
 		int i = 0;
@@ -197,34 +281,6 @@ public class main{
 		}
 	}
 
-	public static boolean run(){
-		Scanner scan = new Scanner(System.in);
-		String text = "";
-
-		System.out.print("User: ");
-		text = scan.nextLine();
-		if(text.contains("exit")){
-			print("Goodbye...");
-			return(false);
-		}
-		text = formatInput(text);
-		//print(text);
-
-		input = split(text); // input is an ArrayList that contains the input.
-		filtered = check(); // action is the commands found in the input.
-		if(filtered.size() != 0){
-			process(); // get associated actions from txt and runs them.
-		}else{
-			response = checkDia();
-			if(response.size()  == 0){
-				print("MAI: I'm not sure what you are trying to say...");
-			}else{
-				process();
-			}
-		}
-		return(true);
-	}
-
 	public static ArrayList check(){ // Need to add backup check to check dialogue.
 		ArrayList common = new ArrayList(commands);
 		int numCommon = 0;
@@ -291,4 +347,5 @@ public class main{
 		print("MAI: Yes sir.");
 		return;
 	}
+*/
 }
