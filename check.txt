@@ -1,12 +1,12 @@
-[internet]:{ComA}:cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
-[browser]:{ComA}:cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
-[rockmelt]:{ComA}:cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
-[firefox]:{ComA}:cd %ProgramFiles(x86)%\Mozilla Firefox\ & firefox.exe
-[explorer]:{ComA}:explorer.exe
-[itunes]:{ComA}:cd %ProgramFiles(x86)%\iTunes\ & iTunes.exe
-[word]:{Com}:cd %ProgramFiles%\Microsoft Office\Office14\ & WINWORD.EXE
-[jcreator]:{Com}:cd %ProgramFiles(x86)%\Xinox Software\JCreatorV5LE\ & JCreator.exe
-[facebook]:{Arg}:--new-window http://www.facebook.com
-[google]:{Arg}:--new-window http://www.google.com
-[gmail]:{Arg}:--new-window http://mail.google.com
-[github]:{Arg}:--new-window http://github.com
+internet#ComA#cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
+browser#ComA#cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
+rockmelt#ComA#cd C:\Users\Big Mac\AppData\Local\RockMelt\Application\ & rockmelt.exe
+firefox#ComA#cd %ProgramFiles(x86)%\Mozilla Firefox\ & firefox.exe
+explorer#ComA#explorer.exe
+itunes#ComA#cd %ProgramFiles(x86)%\iTunes\ & iTunes.exe
+word#Com#cd %ProgramFiles%\Microsoft Office\Office14\ & WINWORD.EXE
+jcreator#Com#cd %ProgramFiles(x86)%\Xinox Software\JCreatorV5LE\ & JCreator.exe
+facebook#Arg#--new-window http://www.facebook.com
+google#Arg#--new-window http://www.google.com
+gmail#Arg#--new-window http://mail.google.com
+github#Arg#--new-window http://github.com
