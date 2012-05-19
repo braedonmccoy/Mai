@@ -1,32 +1,29 @@
 public class Command {
-	public String whole;
-	public String[] parts;
-	public String name;
-	public String act;
-	public String arg;
-	public String type;
+	private String name;
+	private String act;
+	private String arg;
+	private String type;
+
+	private String whole;
+	private String[] parts;
 	public Command nextCommand;
 
-	public void printCommand(){
-		System.out.println("["+name+", "+act+", "+arg+" = "+type+"]");
-	}
 	public Command(String one){
-		int i = 0;
 		whole = one;
 		parts = whole.split("#");
-		type = parts[1];
+		type = parts[2];
 		if(type.equals("Com")){
-			name = parts[0];
-			act = parts[2];
+			name = parts[1];
+			act = parts[3];
 			arg = "No Arg";
 		}else if (type.equals("ComA")){
-			name = parts[0];
-			act = parts[2];
+			name = parts[1];
+			act = parts[3];
 			arg = null;
 		}else if (type.equals("Arg")){
-			name = parts[0];
+			name = parts[1];
 			act = null;
-			arg = parts[2];
+			arg = parts[3];
 		}
 
 	}
@@ -36,6 +33,10 @@ public class Command {
 			name = one;
 			act = three;
 			arg = "No Arg";
+		}else if (type.equals("ComA")){
+			name = one;
+			act = three;
+			arg = null;
 		}else if (type.equals("Arg")){
 			name = one;
 			act = null;
@@ -43,20 +44,25 @@ public class Command {
 		}else{
 			return;
 		}
+		return;
 	}
 	public Command(String one, String two, String three, String four) {
 		name = one;
 		type = two;
 		act = three;
 		arg = four;
+		return;
 	}
-	public String getName(){
-		return name;
+
+	public void printCommand(){
+		System.out.println("["+name+", "+act+", "+arg+" = "+type+"]");
 	}
-	public String getAction(){
-		return (act.concat(arg));
-	}
-	public String getType(){
-		return type;
+	public String export(){
+		if(arg == null){
+			whole = name+"#"+type+"#"+act;
+		}else{
+			whole = name+"#"+type+"#"+act+"#"+arg;
+		}
+		return whole;
 	}
 }

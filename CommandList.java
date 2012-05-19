@@ -6,8 +6,20 @@ public class CommandList {
 	public CommandList() {
 		first = null;
 	}
+
 	public boolean isEmpty(){
 		return first == null;
+	}
+	public int size(){
+		Command current = first;
+		String action = null;
+		int size = 0;
+		while(current != null){
+			size++;
+			current = current.nextCommand;
+		}
+		current = first;
+		return size;
 	}
 	public boolean addFile(String file){
 		String line = null;
@@ -24,15 +36,23 @@ public class CommandList {
 		}
 		return true;
 	}
+	public void add(String one){
+		Command com = new Command(one);
+		com.nextCommand = first;
+		first = com;
+		return;
+	}
 	public void add(String one, String two, String three){
 		Command com = new Command(one, two, three);
 		com.nextCommand = first;
 		first = com;
+		return;
 	}
 	public void add(String one, String two, String three, String four){
 		Command com = new Command(one, two, three, four);
 		com.nextCommand = first;
 		first = com;
+		return;
 	}
 	public void printList() {
 		Command current = first;
@@ -43,13 +63,30 @@ public class CommandList {
             }
             System.out.println("");
 	}
-	public String getAction(String target){
+	public void printCommand(String target){
 		Command current = first;
-		String action = null;
+		String name = null;
 		while(current != null){
-			action = current.getName();
-			if(action.equals(target)){
-				return current.getAction();
+			name = current.getName();
+			if(name.equals(target)){
+				current.printCommand();
+				return;
+			}else{
+				current = current.nextCommand;
+			}
+		}
+		return;
+	}
+	public String export(String target){
+		Command current = first;
+		String name = null;
+		String ex = null;
+		while(current != null){
+			name = current.getName();
+			if(name.equals(target)){
+				ex = current.export();
+				current = first;
+				return ex;
 			}else{
 				current = current.nextCommand;
 			}
